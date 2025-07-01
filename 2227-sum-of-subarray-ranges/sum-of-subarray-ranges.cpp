@@ -1,0 +1,20 @@
+class Solution {
+public:
+    long long subArrayRanges(vector<int>& nums) {
+        long long totalSum = 0;
+        int n = nums.size();
+
+        for (int i = 0; i < n; ++i) {
+            int maxVal = nums[i];
+            int minVal = nums[i];
+
+            for (int j = i; j < n; ++j) {
+                maxVal = max(maxVal, nums[j]);  
+                minVal = min(minVal, nums[j]);  
+                totalSum += (maxVal - minVal); 
+            }
+        }
+
+        return totalSum;
+    }
+};
