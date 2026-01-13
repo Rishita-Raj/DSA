@@ -11,25 +11,12 @@
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {
-          ListNode *slow = head; 
-    
-     // Initialize the fast pointer to the head.
-    ListNode *fast = head; 
-
-    // Traverse the linked list using the
-    // Tortoise and Hare algorithm.
-    while (fast != NULL && fast->next != NULL) {
-        // Move slow one step.
-        slow = slow->next; 
-         // Move fast two steps.
-        fast = fast->next->next; 
-    }
-    
-    
-     // Return the slow pointer,
-     // which is now at the middle node.
-    return slow; 
-
-
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while(fast != NULL && fast->next != NULL){
+            slow = slow->next;
+            fast = fast->next->next;
+        } 
+        return slow;
     }
 };
