@@ -13,25 +13,19 @@ public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
         ListNode* dummy = new ListNode(0, head);
 
-        // Initialize slow and fast pointers at dummy
         ListNode* slow = dummy;
         ListNode* fast = dummy;
 
-        // Move fast pointer N+1 steps ahead to create a gap
-        for (int i = 0; i <= n; i++) {
-            fast = fast->next;
+        for(int i = 0; i<=n; ++i){
+            fast= fast->next;
         }
 
-        // Move both pointers until fast reaches the end
-        while (fast != NULL) {
-            slow = slow->next;
+        while(fast != NULL){
+            slow= slow->next;
             fast = fast->next;
         }
-
-        // Slow is now at node before target → delete target node
         slow->next = slow->next->next;
 
-        // Return updated head
         return dummy->next;
     }
 };
