@@ -9,44 +9,35 @@
 class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
-         ListNode* slow = head;  
-    ListNode* fast = head;  
+        // Initialize slow and fast pointers
+        ListNode* slow = head;
+        ListNode* fast = head;
 
-    // Phase 1: Detect the loop
-    while (fast != NULL && fast->next != NULL) {
-        
-        // Move slow one step
-        slow = slow->next;        
-        
-        // Move fast two steps
-        fast = fast->next->next;  
+        // Traverse until fast and fast->next are not null
+        while (fast != NULL && fast->next != NULL) {
+            // Move slow by one step
+            slow = slow->next;
 
-        // If slow and fast meet,
-        // a loop is detected
-        if (slow == fast) {
-            
-             // Reset the slow pointer
-             // to the head of the list
-            slow = head; 
+            // Move fast by two steps
+            fast = fast->next->next;
 
-            // Phase 2: Find the first node of the loop
-            while (slow != fast) {
-                
-                // Move slow and fast one step
-                // at a time
-                slow = slow->next;  
-                fast = fast->next;  
+            // If they meet, loop is detected
+            if (slow == fast) {
+                // Reset slow to head
+                slow = head;
 
-                // When slow and fast meet again,
-                // it's the first node of the loop
+                // Move both one step at a time to find starting point
+                while (slow != fast) {
+                    slow = slow->next;
+                    fast = fast->next;
+                }
+
+                // Return the start node of the loop
+                return slow;
             }
-            
-            // Return the first node of the loop
-            return slow;  
         }
-    }
-    
-     // If no loop is found, return NULL
-    return NULL; 
+
+        // If no loop found, return NULL
+        return NULL;
     }
 };
