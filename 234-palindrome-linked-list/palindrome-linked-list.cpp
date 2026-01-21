@@ -26,46 +26,29 @@ public:
 }
 
     bool isPalindrome(ListNode* head) {
-         // Check if the linked list is empty or has only one node
-    if (head == NULL || head->next == NULL) {
-        return true;  // It's a palindrome by definition
-    }
-
-    // Initialize two pointers, slow and fast, to find the middle of the linked list
-    ListNode* slow = head;
-    ListNode* fast = head;
-
-    // Traverse the linked list to find the middle using slow and fast pointers
-    while (fast->next != NULL && fast->next->next != NULL) {
-        slow = slow->next;       // Move slow pointer one step at a time
-        fast = fast->next->next; // Move fast pointer two steps at a time
-    }
-
-    // Reverse the second half of the linked list starting from the middle
-    ListNode* newHead = reverseLinkedList(slow->next);
-
-    // Pointer to the first half
-    ListNode* first = head;
-
-    // Pointer to the reversed second half
-    ListNode* second = newHead;
-
-    // Compare data values of nodes from both halves
-    while (second != NULL) {
-        if (first->val != second->val) {
-            // If values do not match, the list is not a palindrome
-            reverseLinkedList(newHead);  // Reverse the second half back to its original state
-            return false;
+        if(head == NULL && head->next == NULL){
+            return true;
         }
+        ListNode* slow = head;
+        ListNode* fast = head;
 
-        first = first->next;  // Move the first pointer
-        second = second->next; // Move the second pointer
-    }
+        while(fast->next != NULL && fast->next->next != NULL){
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        ListNode* newHead = reverseLinkedList(slow->next);
+        ListNode*  first = head;
+        ListNode* second = newHead;
 
-    // Reverse the second half back to its original state
-    reverseLinkedList(newHead);
-
-    // The linked list is a palindrome
-    return true;
+        while(second != NULL){
+            if(first->val != second->val){
+                reverseLinkedList(newHead);
+                return false;
+            }
+            first = first->next;
+            second = second->next;
+        }
+     reverseLinkedList(newHead);
+        return true;
     }
 };
