@@ -10,27 +10,19 @@
  */
 class Solution {
 public: 
-
     ListNode* reverseLinkedList(ListNode* head) {
-    // Check if the list is empty or has only one node
-    if (head == NULL || head->next == NULL) {
-        return head;  // No change is needed; return the current head
-    }
+        ListNode* prev = NULL;
+        ListNode* temp = head;
 
-    // Recursive step: Reverse the remaining part of the list and get the new head
-    ListNode* newHead = reverseLinkedList(head->next);
+        while(temp != NULL){
+            ListNode* front = temp->next;
 
-    // Store the next node in 'front' to reverse the link
-    ListNode* front = head->next;
+            temp->next = prev;
+            prev = temp;
 
-    // Update the 'next' pointer of 'front' to point to the current head
-    front->next = head;
-
-    // Set the 'next' pointer of the current head to null to break the original link
-    head->next = NULL;
-
-    // Return the new head obtained from the recursion
-    return newHead;
+            temp = front;
+        }
+        return prev;
 }
 
     bool isPalindrome(ListNode* head) {
