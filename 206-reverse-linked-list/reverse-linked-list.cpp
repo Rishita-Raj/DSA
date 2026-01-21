@@ -13,25 +13,17 @@ public:
     ListNode* reverseList(ListNode* head) {
          ListNode* prev = NULL;
 
-        // Start from the head of the list
-        ListNode* temp = head;
+         ListNode* temp = head;
 
-        // Traverse the list
-        while (temp != NULL) {
-            // Save the next node
-            ListNode* front = temp->next;
+         while(temp != NULL ){
+            ListNode*  front = temp->next;
 
-            // Reverse the current node's pointer
             temp->next = prev;
 
-            // Move prev to current node
             prev = temp;
 
-            // Move to the next node
             temp = front;
-        }
-
-        // Return new head (last node becomes first)
-        return prev;
+         }
+         return prev;
     }
 };
