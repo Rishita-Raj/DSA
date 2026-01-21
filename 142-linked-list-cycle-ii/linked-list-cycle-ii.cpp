@@ -9,35 +9,24 @@
 class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
-        // Initialize slow and fast pointers
-        ListNode* slow = head;
-        ListNode* fast = head;
+         ListNode* slow = head;
+         ListNode* fast = head;
 
-        // Traverse until fast and fast->next are not null
-        while (fast != NULL && fast->next != NULL) {
-            // Move slow by one step
+         while( fast != NULL && fast->next != NULL){
             slow = slow->next;
-
-            // Move fast by two steps
             fast = fast->next->next;
 
-            // If they meet, loop is detected
-            if (slow == fast) {
-                // Reset slow to head
+            if(slow == fast){
                 slow = head;
+           
 
-                // Move both one step at a time to find starting point
-                while (slow != fast) {
-                    slow = slow->next;
-                    fast = fast->next;
-                }
-
-                // Return the start node of the loop
-                return slow;
+            while(slow != fast){
+                slow = slow->next;
+                fast = fast->next;
             }
-        }
-
-        // If no loop found, return NULL
-        return NULL;
+            return slow;
+         } 
+         }
+         return NULL;
     }
 };
