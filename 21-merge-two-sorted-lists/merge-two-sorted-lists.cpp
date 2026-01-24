@@ -23,14 +23,12 @@ public:
                 list2 = list2->next;
             }
             current = current->next;
-        } 
-
-        if(list1 != nullptr){
-            current->next = list1;
-        }else{
-            current->next = list2;
         }
-
+        if(list1 != nullptr){
+            current->next=list1;
+        }else{
+            current->next=list2;
+        }
         return dummy.next;
     }
 };
