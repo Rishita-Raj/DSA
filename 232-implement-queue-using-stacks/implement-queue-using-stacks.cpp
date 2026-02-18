@@ -1,40 +1,40 @@
 class MyQueue {
-    stack<int> input, output;
+    stack<int> input,output;
 public:
     MyQueue() {
         
     }
     
     void push(int x) {
-        while (!input.empty()) {
-      output.push(input.top());
-      input.pop();
-    }
-       cout << "The element pushed is " << x << endl;
-    input.push(x);
-  
-    while (!output.empty()) {
-      input.push(output.top());
-      output.pop();
-    }
+        while(!input.empty()){
+            output.push(input.top());
+            input.pop();
+        }
+        cout<<"The elment pushed is"<<x<<endl;
+        input.push(x);
+
+        while(!output.empty()){
+            input.push(output.top());
+            output.pop();
+        }
     }
     
     int pop() {
-          if (input.empty()) {
-      cout << "Stack is empty";
-      exit(0);
-    }
-    int val = input.top();
-    input.pop();
-    return val;
+         if(input.empty()){
+            cout<<"Stack is empty";
+            exit(0);
+        }
+        int val = input.top();
+        input.pop();
+        return val;
     }
     
     int peek() {
-         if (input.empty()) {
-      cout << "Stack is empty";
-      exit(0);
-    }
-    return input.top();
+        if(input.empty()){
+            cout<<"Stack is empty";
+            exit(0);
+        }
+        return input.top();
     }
     
     bool empty() {
