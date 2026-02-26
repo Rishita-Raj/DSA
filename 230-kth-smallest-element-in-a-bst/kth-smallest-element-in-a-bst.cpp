@@ -12,21 +12,17 @@
 class Solution {
 public:
     int kthSmallest(TreeNode* root, int k) {
-        int count = 0;
-        int result = -1;
-        inorder(root, count, k, result);
-        return result;
+        return inorder(root, k);
     }
-
 private:
-    void inorder(TreeNode* node, int& count, int k, int& result) {
-        if (!node) return;
-        inorder(node->left, count, k, result);
-        count++;
-        if (count == k) {
-            result = node->val;
-            return;
-        }
-        inorder(node->right, count, k, result);
+    int inorder(TreeNode* node, int& k){
+        if(!node) return -1;
+
+        int left = inorder(node->left, k);
+        if(left != -1) return left;
+        k--;
+
+        if(k == 0) return node->val;
+        return inorder(node->right, k); 
     }
 };
