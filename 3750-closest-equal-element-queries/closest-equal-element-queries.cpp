@@ -7,15 +7,13 @@ public:
             mp[nums[i]].push_back(i);
         }
 
-        // Step 2: store answer for every index
         vector<int> best(n, -1);
 
-        // Step 3: process each group
         for (auto &it : mp) {
             vector<int> &idx = it.second;
             int k = idx.size();
 
-            if (k == 1) continue; // no pair exists
+            if (k == 1) continue; 
 
             for (int i = 0; i < k; i++) {
                 int curr = idx[i];
@@ -26,7 +24,6 @@ public:
                 int distPrev = abs(curr - prev);
                 int distNext = abs(curr - next);
 
-                // circular adjustment
                 distPrev = min(distPrev, n - distPrev);
                 distNext = min(distNext, n - distNext);
 
@@ -34,7 +31,6 @@ public:
             }
         }
 
-        // Step 4: answer queries
         vector<int> ans;
         for (int q : queries) {
             ans.push_back(best[q]);
