@@ -11,19 +11,18 @@
  */
 class Solution {
 public:
-
-    bool isSametree(TreeNode* p, TreeNode* q){
+     bool isSametree(TreeNode* p, TreeNode* q) {
         if(!p && !q) return true;
         if(!p || !q) return false;
 
         if(p->val != q->val) return false;
         return isSametree(p->left, q->left) && isSametree(p->right, q->right);
-    }
+     }
 
     bool isSubtree(TreeNode* root, TreeNode* subRoot) {
-            if(!root) return false;
-            if(isSametree(root, subRoot)) return true;
+        if(!root) return false;
 
-            return isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);    
+        if(isSametree(root, subRoot)) return true;
+        return isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
     }
 };
