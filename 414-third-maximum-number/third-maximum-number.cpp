@@ -1,31 +1,30 @@
 class Solution {
 public:
     int thirdMax(vector<int>& nums) {
-        unordered_map<int,int>m;
-        int ans;
-        int maximum;
-        int count=0;
-        for(int i=0;i<3;i++){
-            int maxi=INT_MIN;
-            bool Found=false;
-            for(int j=0;j<nums.size();j++){
-                if(nums[j]>=maxi and m.find(nums[j])==m.end()){
-                    maxi=nums[j];
-                    Found=true;
-                }
+        
+        long long first = LLONG_MIN;
+        long long second = LLONG_MIN;
+        long long third = LLONG_MIN;
+
+        for (int num : nums) {
+
+            if (num == first || num == second || num == third)
+                continue;
+
+            if (num > first) {
+                third = second;
+                second = first;
+                first = num;
             }
-            if(Found){
-                m[maxi]=1;
-                count++;
-                if(i==0) maximum=maxi;
-                ans=maxi;
+            else if (num > second) {
+                third = second;
+                second = num;
+            }
+            else if (num > third) {
+                third = num;
             }
         }
-        if(count<3){
-            return maximum;
-        }
-        else{
-            return ans;
-        }
+
+        return (third == LLONG_MIN) ? first : third;
     }
 };
