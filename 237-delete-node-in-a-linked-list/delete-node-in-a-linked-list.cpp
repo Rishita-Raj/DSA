@@ -17,3 +17,22 @@ public:
         delete temp;
     }
 };
+
+// ListNode* deleteHead(ListNode* head) {
+
+//     // If the list is empty
+//     if(head == NULL)
+//         return NULL;
+
+//     // Store the current head node
+//     ListNode* temp = head;
+
+//     // Move head to the next node
+//     head = head->next;
+
+//     // Delete the old head
+//     delete temp;
+
+//     // Return the new head
+//     return head;
+// }
