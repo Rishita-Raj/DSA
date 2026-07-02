@@ -9,14 +9,11 @@
 class Solution {
 public:
     void deleteNode(ListNode* node) {
-        // Copy the value of the next node into current node
         node->val = node->next->val;
 
-        // Skip the next node
         ListNode* temp = node->next;
         node->next = node->next->next;
 
-        // Optional (good practice)
         delete temp;
     }
 };
