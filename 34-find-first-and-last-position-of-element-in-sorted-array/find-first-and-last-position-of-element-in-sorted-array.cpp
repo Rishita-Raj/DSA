@@ -1,6 +1,5 @@
 class Solution {
 public:
-
     int binarySearch(vector<int>nums, int target, bool findfirst){
         int left = 0, right = nums.size()-1;
         int result = -1;
