@@ -10,13 +10,6 @@
  * };
  */
 class Solution {
-public:
-    vector<int> rightSideView(TreeNode* root) {
-        vector<int> res;
-        recursionRight(root, 0, res);
-        return res;
-    }
-
 private:
     void recursionRight(TreeNode* root, int level, vector<int>& res) {
         if (root == NULL) return;
@@ -27,4 +20,11 @@ private:
         recursionRight(root->right, level + 1, res);
         recursionRight(root->left, level + 1, res);
     }
+public:
+    vector<int> rightSideView(TreeNode* root) {
+        vector<int> res;
+        recursionRight(root, 0, res);
+        return res;
+    }
+
 };
