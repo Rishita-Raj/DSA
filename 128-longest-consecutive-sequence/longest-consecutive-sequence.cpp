@@ -8,10 +8,10 @@ public:
             st.insert(nums[i]);    
         }   
         int longest = 1;
-        for(auto it: st){
-            if(st.find(it-1) == st.end()){
+        for(auto x: st){
+            if(st.find(x-1) == st.end()){
                 int cnt = 1;
-                int x = it;
+                // int x = it;
                 while (st.find(x + 1) != st.end()) {
                     x = x + 1; 
                     cnt = cnt + 1; 
@@ -22,4 +22,3 @@ public:
         return longest; 
     }
 };
-
