@@ -12,7 +12,7 @@ public:
         if(j==-1) return;
         for(int i = j+1;i<n;i++){
             if(nums[i] != 0){
-                swap(nums[i], nums[j]);
+                swap(nums[j], nums[i]);
                 j++;
             }
         }
